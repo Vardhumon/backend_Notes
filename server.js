@@ -22,7 +22,9 @@ app.use(express.json());
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/notes_app', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
 })
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log('MongoDB connection error:', err));
